@@ -5,31 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Calling Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <!-- Calling font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Current Weather App</title>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <h1 class="p-2 m-2 fw-bolder text-center bg-light border-bottom border-5 border-black rounded">Your Current Weather!</h1>
     </header>
+    <!-- Main content section -->
     <main>
         <div class="container-fluid m-2 shadow">
             <div class="row">
+                <!-- Side area with "search" -->
                 <div class="col-lg-3 bg-light">
                     <h4 class="mt-1 fs-2 fw-bolder">Search for your location:</h4>
                     <div class="input-group mb-3">
                         <input id="city-select" type="text" class="form-control rounded shadow" placeholder="Your City" aria-label="Type your city here">
                         <div class="input-group-append">
+                            <!-- Search Button -->
                             <button class="btn btn-primary ms-2 shadow" type="button" id="search-button">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
                     </div>
+                    <!-- Clear button -->
                     <button class="btn btn-danger mb-3 fw-bold shadow" type="button" id="clear-searches">Clear</button>
                     <form id="history" role="button"></form>
                 </div>
+                <!-- This area displays the large current weather card -->
                 <div class="col-lg-9">
                     <div class="row mr-0">
                         <div class="col-lg-11 card m-3 bg-secondary d-none" id="current-weather">
@@ -43,11 +51,13 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Weekly Forecast header -->
                     <div class="row d-none" id="week-header">
                         <div class="col-12">
                             <h2 class="w-50 mx-auto fw-bolder fs-1 text-center border-top border-bottom border-5 border-black rounded p-3 shadow">Weekly Forecast</h2>
                         </div>
                     </div>
+                    <!-- Weekly forecast daily cards -->
                     <div class="row">
                         <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
                         <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
@@ -59,7 +69,7 @@
             </div>
         </div>
     </main>
-
+    <!-- Calling JS -->
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
