@@ -15,19 +15,19 @@
         <h1 class="p-2 m-2 fw-bolder text-center bg-light border-bottom border-5 border-black rounded">Your Current Weather!</h1>
     </header>
     <main>
-        <div class="container-fluid m-2">
+        <div class="container-fluid m-2 shadow">
             <div class="row">
                 <div class="col-lg-3 bg-light">
-                    <h4 class="mt-1">Search for your location:</h4>
+                    <h4 class="mt-1 fs-2 fw-bolder">Search for your location:</h4>
                     <div class="input-group mb-3">
-                        <input id="city-select" type="text" class="form-control rounded" placeholder="Your City" aria-label="Type your city here">
+                        <input id="city-select" type="text" class="form-control rounded shadow" placeholder="Your City" aria-label="Type your city here">
                         <div class="input-group-append">
-                            <button class="btn btn-primary ms-2" type="button" id="search-button">
+                            <button class="btn btn-primary ms-2 shadow" type="button" id="search-button">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-danger mb-3 fw-bold" type="button" id="clear-searches">Clear</button>
+                    <button class="btn btn-danger mb-3 fw-bold shadow" type="button" id="clear-searches">Clear</button>
                     <form id="history" role="button"></form>
                 </div>
                 <div class="col-lg-9">
@@ -44,15 +44,15 @@
                     </div>
                     <div class="row d-none" id="week-header">
                         <div class="col-12">
-                            <h2 class="fw-bolder fs-1 text-center border-top border-bottom border-5 border-black rounded p-3">Weekly Forecast</h2>
+                            <h2 class="w-50 mx-auto fw-bolder fs-1 text-center border-top border-bottom border-5 border-black rounded p-3 shadow">Weekly Forecast</h2>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded"></div>
-                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded"></div>
-                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded"></div>
-                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded"></div>
-                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded"></div>
+                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
+                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
+                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
+                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
+                        <div class="col-md-2 fl bg-secondary text-white m-2 rounded shadow"></div>
                     </div>
                 </div>
             </div>
