@@ -1,5 +1,7 @@
+// openweathermap api key
 var apiKey = "11a245f3d50237252d19b41b74296a4b";
 
+// Global variables for DOM modification
 var cityName = document.getElementById("city-name");
 var searchButton = document.getElementById("search-button");
 var clearSearch = document.getElementById("clear-searches");
@@ -17,6 +19,7 @@ var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
 var weather = {
   updateWeather: function(city) {
+    // Fetching the required API data
     fetch(
         "https://api.openweathermap.org/data/2.5/forecast?q="
         + city
@@ -30,6 +33,7 @@ var weather = {
             this.weatherStat(data);
         });
   },
+  // Parsing weather data & updating the DOM for the current day
   weatherStat: function(response){
     currentWeather.classList.remove("d-none");
 
@@ -46,7 +50,7 @@ var weather = {
     currentSpeed.innerHTML = "Wind Speed: " + response.list[0].wind.speed + " MPH";
 
     weekForecast.classList.remove("d-none");
-
+    // Parsing and updating the DOM for the weekly forecast
     var forecastList = document.querySelectorAll(".fl");
     for (i = 0; i < forecastList.length; i++) {
         forecastList[i].innerHTML = "";
@@ -78,7 +82,7 @@ var weather = {
         forecastList[i].append(weatherCondition);
     }
   },
-
+// This function is creating the search history and making it clickable
   triggerSearchHistory: function() {
     currentHistory.innerHTML = "";
     for (let i = 0; i < searchHistory.length; i++) {
@@ -99,7 +103,8 @@ var weather = {
     }
   }
 }
-
+// This function is checking that the user has included data
+// Also puts the data into localStorage for the search history
 searchButton.addEventListener("click", function () {
   var searchEntry = citySelect.value;
   if (searchEntry === "") {
@@ -112,12 +117,13 @@ searchButton.addEventListener("click", function () {
   }
 });
 
+// This function empties the search history from your current page and localStorage
 clearSearch.addEventListener("click", function () {
   localStorage.clear();
   searchHistory = [];
   weather.triggerSearchHistory();
 });
-
+// This is responsible for updating the weather based on a last searched city
 weather.triggerSearchHistory();
 if (searchHistory.length > 0) {
   weather.updateWeather(searchHistory[searchHistory.length - 1]);
