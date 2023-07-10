@@ -11,6 +11,7 @@ var currentHumidity = document.getElementById("humidity");
 var currentSpeed = document.getElementById("wind-speed");
 var weekForecast = document.getElementById("week-header");
 var currentHistory = document.getElementById("history");
+var currentCondition = document.getElementById("weather-description");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
 
@@ -39,6 +40,7 @@ var weather = {
     cityName.innerHTML = response.city.name + " (" + tMonth + "/" + tDay + "/" + tYear + ") ";
     currentIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png");
     currentIcon.setAttribute("alt", response.list[0].weather[0].description);
+    currentCondition.innerHTML = "Current Weather Conditions: " + response.list[0].weather[0].description;
     currentTemp.innerHTML = "Temperature: " + Math.floor(response.list[0].main.temp) + " &#176F";
     currentHumidity.innerHTML = "Humidity: " + response.list[0].main.humidity + "%";
     currentSpeed.innerHTML = "Wind Speed: " + response.list[0].wind.speed + " MPH";
@@ -57,6 +59,8 @@ var weather = {
         var weatherIcon = document.createElement("img");
         var weatherTemp = document.createElement("p");
         var weatherHumidity = document.createElement("p");
+        var weatherSpeed = document.createElement("p");
+        var weatherCondition = document.createElement("p");
 
         listDateP.setAttribute("class", "mt-3 mb-0 forecast-date");
         listDateP.innerHTML = listMonth + "/" + listDay + "/" + listYear;
@@ -65,9 +69,13 @@ var weather = {
         weatherIcon.setAttribute("alt", response.list[listIndex].weather[0].description);
         weatherTemp.innerHTML = "Temperature: " + Math.floor(response.list[listIndex].main.temp) + " &#176F";
         weatherHumidity.innerHTML = "Humidity: " + response.list[listIndex].main.humidity + "%";
+        weatherSpeed.innerHTML = "Wind Speed: " + response.list[listIndex].wind.speed + "MPH";
+        weatherCondition.innerHTML = "Condition: " + response.list[listIndex].weather[0].description;
         forecastList[i].append(weatherIcon);
         forecastList[i].append(weatherTemp);
         forecastList[i].append(weatherHumidity);
+        forecastList[i].append(weatherSpeed);
+        forecastList[i].append(weatherCondition);
     }
   },
 
@@ -81,8 +89,6 @@ var weather = {
       historyEntry.setAttribute("value", searchHistory[i]);
       historyEntry.setAttribute("role", "button");
       
-  
-      // Create a closure to capture the correct value of searchHistory[i]
       (function(entry) {
         historyEntry.addEventListener("click", function () {
           weather.updateWeather(entry);
@@ -94,14 +100,16 @@ var weather = {
   }
 }
 
-  
-
 searchButton.addEventListener("click", function () {
   var searchEntry = citySelect.value;
+  if (searchEntry === "") {
+    alert("You must enter a city");
+  } else {
   weather.updateWeather(searchEntry);
   searchHistory.push(searchEntry);
   localStorage.setItem("search", JSON.stringify(searchHistory));
   weather.triggerSearchHistory();
+  }
 });
 
 clearSearch.addEventListener("click", function () {
