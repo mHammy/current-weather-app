@@ -79,6 +79,7 @@ var weather = {
       historyEntry.setAttribute("readonly", true);
       historyEntry.setAttribute("class", "form-control d-block bg-secondary text-white fw-bold text-center");
       historyEntry.setAttribute("value", searchHistory[i]);
+      historyEntry.setAttribute("role", "button");
       
   
       // Create a closure to capture the correct value of searchHistory[i]
